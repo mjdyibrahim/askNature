@@ -1,9 +1,11 @@
 # AI-Community
 
-Welcome to the AI Community Management Simulation project, where we explore the creation of an ideal society using principles inspired by Sufism, Coherence Verification, and potentially Emotional Intelligence (EQL). In this simulation, we introduce 19 core characters representing key functions within a virtual community.
+The biggest challenge with our world is a conciousness challenge, majority of the world's population are vibrating below 200, which is the mark for integrity. According to David R Hawkings Phd conciousness researcher and author of Power vs. Force.
+
+Welcome to the societyOS, AI Community Management Simulation project, the where we explore the creation of an ideal society using principles inspired by Sufism, Coherence Verification, and potentially Energetic Quality Level (EQL). In this simulation, we introduce 19 core characters representing key functions within a virtual community.
 
 ## Objective
-The primary goal of this project is to utilize artificial intelligence to model and assess the effectiveness of a community management system based on the principles of Sufism and Coherence Verification.
+The primary goal of this project is to utilize artificial intelligence to model a community management system that consistently works on raising the conciousness vibration frequency of its members based on the principles of Sufism (Wuhdat Al-Wujood), Oneness of Being - and Coherence Verification. 
 
 ## Key Features
 - **Diverse Representation**: The simulation includes 19 distinctive characters, each assigned to a crucial role within the community, ensuring a comprehensive and balanced representation of core societal functions.
