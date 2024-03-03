@@ -1,18 +1,24 @@
-# AI-Community
+# AI-Community / SocietyOS
 
 The biggest challenge with our world is a conciousness challenge, majority of the world's population are vibrating below 200, which is the mark for integrity. According to David R Hawkings Phd conciousness researcher and author of Power vs. Force.
 
-Welcome to the societyOS, AI Community Management Simulation project, the where we explore the creation of an ideal society using principles inspired by Sufism, Coherence Verification, and potentially Energetic Quality Level (EQL). In this simulation, we introduce 19 core characters representing key functions within a virtual community.
+Welcome to the societyOS, AI Community Management Simulation project, the where we explore the creation of an ideal society using principles inspired by Sufism, Coherence Verification, Biomimicry and potentially Energetic Quality Level (EQL). In this simulation, we introduce 19 core characters representing key functions within a virtual community.
+
+## Keywords
+Truth, Nature, Conciousness, Coherence Verification, Copilot for Leaders, Regenerative Action
 
 ## Objective
-The primary goal of this project is to utilize artificial intelligence to model a community management system that consistently works on raising the conciousness vibration frequency of its members based on the principles of Sufism (Wuhdat Al-Wujood), Oneness of Being - and Coherence Verification. 
+The primary goal of this project is to utilize artificial intelligence to model a nature-based community management system that consistently works on raising the conciousness of its members based on the principles of Sufism (Wuhdat Al-Wujood) - Oneness of Being -, Biomimicry,  Coherence Verification, 
 
 ## Key Features
-- **Diverse Representation**: The simulation includes 19 distinctive characters, each assigned to a crucial role within the community, ensuring a comprehensive and balanced representation of core societal functions.
+- **Integrated Society**: The simulation includes 19 distinctive characters, each assigned to a crucial role within the community, ensuring a comprehensive and balanced representation of core societal functions.
 
 - **Principles Guiding the Simulation**:
-  - **Sufism**: Drawing inspiration from Sufi philosophy to promote spiritual growth, compassion, and unity within the community.
+  - **Sufism**: Drawing inspiration from Sufi's principle of Wihdat-ul-Wujuud, onness of being to promote spiritual growth, compassion, and unity within the community.
+  - **Biomimicry**: Giomimicry is the emulation of the models, systems, and elements of nature for the purpose of solving complex human problems.
+  - **Regenerative Action**: Each member of society contributing more than required for the specific action/situation simulating the way nature works
   - **Coherence Verification**: Ensuring harmonious interactions and effective collaboration among the simulated characters.
+  - **Chakra/Energy Healing**: Chakra healing is a form of alternative therapy that aims to balance the energy centers of the body, known as chakras, through various techniques such as meditation, yoga, and Reiki
 
 - **Roles and Responsibilities**:
   - Explore the diverse functions represented by characters such as ABAS, AMIN, KIDR, and others, each contributing to the well-being and prosperity of the virtual community.
