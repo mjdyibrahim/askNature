@@ -1,0 +1,3 @@
+venv/
+conscienceos.sock
+uwsgi.ini
