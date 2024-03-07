@@ -5,6 +5,9 @@ import os
 import pandas as pd
 import numpy as np
 
+# Define the path to the marker file
+marker_file_path = 'weaviate_class_created.txt'
+
 # Setup API keys
 cohere_api_key = os.getenv('cohere_api_key')
 weaviate_api_key = os.getenv('weaviate_api_key')
@@ -19,15 +22,25 @@ client = weaviate.connect_to_wcs(
     auth_credentials=weaviate.auth.AuthApiKey(weaviate_api_key))
 
 
-def create_class():
-    # Define a data collection (class) in Weaviate
-    class_config = {
-        "name": "BiologicalStrategiesInnovations",
-        "vectorizer_config": weaviate.classes.config.Configure.Vectorizer.text2vec_cohere(),
-        "generative_config": weaviate.classes.config.Configure.Generative.cohere()
-    }
-    class_object = client.collections.create(**class_config)
-    return class_object
+def create_weaviate_class():
+    # Check if the marker file exists
+    if not os.path.exists(marker_file_path):
+        # Define a data collection (class) in Weaviate
+        class_config = {
+            "name": "BiologicalStrategiesInnovations",
+            "vectorizer_config": weaviate.classes.config.Configure.Vectorizer.text2vec_cohere(),
+            "generative_config": weaviate.classes.config.Configure.Generative.cohere()
+        }
+        class_object = client.collections.create(**class_config)
+
+        # Create the marker file
+        with open(marker_file_path, 'w') as f:
+            f.write("Weaviate class created")
+
+        return class_object
+    else:
+        print("Weaviate class already created.")
+        return None
 
 
 def process_file(file_path):
@@ -37,7 +50,6 @@ def process_file(file_path):
     # Load data
     raw_df = pd.read_csv(file_path)
 
-    # Assuming 'name' column contains text data
     texts = raw_df['name'].tolist()
 
     # Embed text data using Cohere
@@ -67,6 +79,10 @@ def process_file(file_path):
 
     #client.collections.get('BiologicalStrategiesInnovations').data.insert_many(objects)
 
+
+# Runs only the first time the app is being ran
+create_weaviate_class()
+
 # Process embeddings for each CSV file
-#process_file("biological-strategies.csv")
+process_file("biological-strategies.csv")
 process_file("biological-innovations.csv")
