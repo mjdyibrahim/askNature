@@ -3,3 +3,5 @@ conscienceos.sock
 uwsgi.ini
 biological-innovations.csv
 biological-strategies.csv
+.ipynb_checkpoints
+.env

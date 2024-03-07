@@ -29,7 +29,9 @@ print(raw_df.shape)
 hq_df = raw_df
 hq_df.head()
 
-response = co.embed(texts=texts, model='multilingual-22-12').embeddings
+response = co.embed(
+    texts=texts, 
+    model='multilingual-22-12').embeddings
 embeds = np.array(response)
 
 
