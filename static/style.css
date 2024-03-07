@@ -159,7 +159,7 @@ body {
 
 .user-message-content {
 	display:inline;
-	background-color: #00bbd6;
+	background-color: #185B04;
 	float:left;
 	padding:0px 14px;
 	margin-right:20px;
@@ -202,7 +202,7 @@ body {
 
 .chat-footer button[type="submit"] {
 	border: none;
-	background-color: #00bbd6;
+	background-color: #185B04;
 	color: #fff;
 	cursor: pointer;
 	border: none;
