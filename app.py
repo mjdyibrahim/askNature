@@ -24,11 +24,6 @@ client = weaviate.connect_to_wcs(
     auth_credentials=weaviate.auth.AuthApiKey(weaviate_api_key))
 
 
-raw_df = pd.read_csv("biological-strategies.csv", index_col=0)
-print(raw_df.shape)
-hq_df = raw_df
-hq_df.head()
-
 response = co.embed(
     texts=texts, 
     model='multilingual-22-12').embeddings
