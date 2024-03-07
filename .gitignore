@@ -1,3 +1,5 @@
 venv/
 conscienceos.sock
 uwsgi.ini
+biological-innovations.csv
+biological-strategies.csv

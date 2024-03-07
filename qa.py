@@ -1,0 +1,4 @@
+"How can we develop sustainable construction materials that mimic the strength and durability of wood without relying on traditional manufacturing processes?", https://asknature.org/strategy/wood-self-assembles/
+"How can we improve the design of drinking straws or similar devices to make it easier for individuals with limited mobility or disabilities to drink liquids without spilling?", https://asknature.org/strategy/tongue-defeats-gravity/
+"How can we design more resilient and fire-resistant building materials for homes and structures in wildfire-prone regions to minimize damage and enhance safety?", https://asknature.org/strategy/surviving-in-fire-prone-areas/
+"What strategies can local communities implement to enhance fire resilience and safety in residential areas located near wildfire-prone regions, taking inspiration from nature's ability to survive and adapt to fire?", https://asknature.org/strategy/surviving-in-fire-prone-areas/
