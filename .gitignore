@@ -1,7 +1,7 @@
 venv/
+.ipynb_checkpoints/
+.env
 conscienceos.sock
 uwsgi.ini
 biological-innovations.csv
 biological-strategies.csv
-.ipynb_checkpoints
-.env
