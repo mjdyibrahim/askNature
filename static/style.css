@@ -1,0 +1,222 @@
+body {
+    background-color: #045B1C; /* Background color */
+    color: #E8AE00; /* Main text color */
+    font-family: Arial, sans-serif; /* Specify font family */
+}
+
+.container {
+    max-width: 800px; /* Set maximum width for content */
+    margin: 0 auto; /* Center align content */
+    padding: 20px; /* Add padding around content */
+}
+
+h1 {
+    text-align: center; /* Center align heading */
+}
+
+.sub-heading {
+    text-align: center; /* Center align sub-heading */
+}
+
+form {
+    text-align: center; /* Center align form elements */
+}
+
+input[type="text"] {
+    width: 100%; /* Make text inputs full width */
+    padding: 10px; /* Add padding to text inputs */
+    margin-bottom: 10px; /* Add margin between inputs */
+}
+
+.options-row {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center align items vertically */
+}
+
+.options-row label {
+    flex: 0 0 120px; /* Set width for labels */
+}
+
+.options-row input {
+    flex: 1; /* Take remaining width */
+    height: 40px; /* Set larger height */
+    padding: 10px; /* Add padding to inputs */
+    margin-left: 10px; /* Add margin to the left of inputs */
+}
+
+button {
+    padding: 10px 20px; /* Add padding to button */
+    background-color: #E8AE00; /* Button background color */
+    color: #045B1C; /* Button text color */
+    border: none; /* Remove border */
+    cursor: pointer; /* Add cursor pointer on hover */
+}
+
+button:hover {
+    background-color: #FFD700; /* Change background color on hover */
+    color: #045B1C; /* Change text color on hover */
+}
+
+body {
+    display: flex;	
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.column-left {
+    flex: 1;
+    background-color: #185B04;
+	color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+    margin-right: 0px;
+    height: 100vh;
+}
+
+.column-right {
+    flex: 3;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+    height: 100vh;
+}
+
+/* Position the LYLA icon on the chat header */
+.icon-lyla {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Position the user icon on the left of the chat message */
+.icon-user {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.chat-header {
+
+	padding: 1rem;
+}
+
+.chat-header h1 {
+	margin: 0;
+	font-size: 2rem;
+}
+
+.chat-body {
+	flex: 1;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	padding-bottom:-120px;
+}
+
+.message {
+	margin-bottom: 1rem;
+	max-width: 80%;
+	padding: 1rem;
+	border-radius: 0.5rem;
+}
+
+.lyla-message {
+	display:flex;
+	align-self: flex-start;
+}
+
+.lyla-message-icon {
+	flex:1;
+	vertical-align:middle;
+}
+
+.lyla-message-content {
+	flex:3;
+	background-color: #f5f5f5;
+	padding:0px 14px;
+	margin-left:20px;
+	border-radius:30px;
+}
+
+.user-message {
+	display:relative;
+	align-self: flex-end;
+	color: #fff;
+}
+
+.user-message-icon {
+	display:inline;
+	float:right;
+	vertical-align:middle;
+}
+
+.user-message-content {
+	display:inline;
+	background-color: #00bbd6;
+	float:left;
+	padding:0px 14px;
+	margin-right:20px;
+	border-radius:30px;
+}
+
+
+.chat-footer {
+	display: flex;
+	bottom: 0px;
+	background-color: #f5f5f5;	
+	padding: 20px;
+}
+
+.chat-footer form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  width:85%
+
+}
+
+.chat-footer input[type="text"] {
+	width: 80%;	
+	flex: 1;
+	border: none;
+	border-radius: 0.5rem;
+	margin-right: 0.5rem;
+	height:40px;
+	outline: none;
+	font-size: 16px;
+	padding: 10px;
+	border-radius: 30px;
+
+}
+
+.chat-footer button[type="submit"] {
+	border: none;
+	background-color: #00bbd6;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+	color: #fff;
+	font-size: 16px;
+	padding: 10px 20px;
+	border-radius: 30px;
+	cursor: pointer;
+	margin-left: 10px;
+	
+}
+
+.chat-footer button[type="submit"]:hover {
+	background-color: #fff;
+	color:#00bbd6;
+}
+

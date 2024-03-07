@@ -1,34 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to ConscienceOS</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>ConscienceOS - Harnessing Nature's Wisdom</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to ConscienceOS</h1>
-        <div class="sub-heading">
-            <p>We will help you make the most nature-friendly decisions.</p>
+	<section class="column-left">
+        <div class="upper-nav">          
+
         </div>
-        <form>
-            <label for="challenge">Enter your challenge:</label><br>
-            <input type="text" id="challenge" name="challenge"><br><br>
-            <div class="options-row">
-                <label for="option1">Option 1:</label>
-                <input type="text" id="option1" name="option1">
+        
+        
+
+        <div class="chat-header">
+            <h1>Utilizing Biomimicry for Sustainable Solutions</h1>
+            <p>Doing it the nature's way</p>
+            <ul>
+                <li>Match with closest biological strategy</li>
+                <li>Extend your chat session into a design session</li>
+             
+            </ul>
+        </div>
+		<nav class="nav_list">
+
+        </nav>
+        <div>
+            <p>Made with ❤️‍ by Nature Lovers</p>
+        </div>
+		
+	</section>
+	<section class="column-right">
+
+        <div class="chat-body" id="chat-body">
+            <div class="message ai-message">
+					<div class="ai-message-icon">
+						<img src="{{ url_for('static', filename='ai.png') }}" alt="AI icon">
+					</div>
+					
+					<div class="ai-message-content">
+						<p>What do you want to accomplish?</p>
+					</div>
             </div>
-            <div class="options-row">
-                <label for="option2">Option 2:</label>
-                <input type="text" id="option2" name="option2">
-            </div>
-            <div class="options-row">
-                <label for="option3">Option 3:</label>
-                <input type="text" id="option3" name="option3">
-            </div>
-            <button type="submit">Find the optimal nature-friendly option</button>
-        </form>
-    </div>
+        </div>
+        <div class="chat-footer">
+            <form id="chat-form">
+                <input type="text" name="message" placeholder="Type your message...">
+                <button type="submit">Send</button>
+                <button id="voice-input-button" onclick="toggleVoiceInput()">Start voice input</button>
+            </form>
+        </div>
+	</section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
