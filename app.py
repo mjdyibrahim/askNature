@@ -64,14 +64,7 @@ def get_bot_response():
 
     return jsonify({"message": ai_response})
 
-    # Search for similar objects in Weaviate
-    result = (
-        client.query.builder()
-        .with_near_text("text", query)
-        .with_near_vector("embedding", xq[0])
-        .build()
-        .execute()
-    )
+def update_context():
 
     # Extract relevant information from the matches
     contexts = []
@@ -83,27 +76,17 @@ def get_bot_response():
 
     return formatted_contexts
 
-    # Append contexts until hitting the limit
-    for i in range(1, len(contexts)):
-        if len("".join(contexts[:i])) >= limit:
-            prompt = prompt_start + "".join(contexts[: i - 1]) + prompt_end
-            break
-        elif i == len(contexts) - 1:
-            prompt = prompt_start + "".join(contexts) + prompt_end
-    return prompt
-
 
 def get_ai_response(user_response):
-    string_dialogue = """Find closest alternative"""
+    string_dialogue = update_context()
     for dict_message in session["conversation"].messages:
         if dict_message["role"] == "user":
             string_dialogue += "User: " + dict_message["content"] + "\\n\\n"
         else:
             string_dialogue += "Assistant: " + dict_message["content"] + "\\n\\n"
-        ai_response = co.generate()
+            ai_response = co.generate(query_embed=co.embed(texts=[query], input_type=search_query, model="multilingual-22-12")
     return ai_response.generations[0].text.strip()
 
-    return ai_response
 
 
 if __name__ == "__main__":
