@@ -12,6 +12,14 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # Set a secret key for session management
 
+# Load embeddings from .npy files
+innovations_embeddings = np.load('biological-innovations_embeddings.npy')
+strategies_embeddings = np.load('biological-strategies_embeddings.npy')
+
+# Combine embeddings to create context string
+context_embeddings = np.concatenate((innovations_embeddings, strategies_embeddings), axis=0)
+context_string = ' '.join(map(str, context_embeddings.flatten()))
+
 # Setup API keys
 cohere_api_key = os.getenv('CO_API_KEY')
 weaviate_api_key = os.getenv('WEAVIATE_API_KEY')
@@ -35,61 +43,53 @@ def home():
 
 
 @app.route("/", methods=["POST"])
+
 def get_bot_response():
 
     # Initialize conversation history list in session if not present
     if "conversation" not in session:
         session["conversation"] = []
 
-    # Add user input to conversation history
-    session["conversation"].append({"role": "user", "content": user_response})
+    # Get user response from JSON request
+    user_response = request.json.get("message")  # Use get method to safely access JSON data
 
-    # Get conversation history
-    conversation = session["conversation"]
+    if user_response:
+        # Add user input to conversation history
+        session["conversation"].append({"role": "user", "content": user_response})
 
-    if len(conversation) == 0:
-        user_response = request.json["message"]
-        response = get_ai_response(user_response)
+        # Get conversation history
+        conversation = session["conversation"]
 
-        ai_response = response.choices[0].message["content"].strip()
-
-    else:
-        previous_response = conversation[-1]
-        user_response = request.json["message"]
-
-        response = get_ai_response(user_response)
-
-        ai_response = response.choices[0].message["content"].strip()
-
-    previous_response = {"user": user_response, "assistant": ai_response}
-    conversation.append(previous_response)
-    session["conversation"].add_assistant_message(ai_response)
-
-    return jsonify({"message": ai_response})
-
-def update_context():
-
-    # Extract relevant information from the matches
-    contexts = []
-    for item in result["data"]["Get"]["BiologicalStrategy"]:
-        contexts.append(f"Text: {item['text']}")
-
-    # Combine the information into formatted contexts
-    formatted_contexts = "\n".join(contexts)
-
-    return formatted_contexts
-
-
-def get_ai_response(user_response):
-    string_dialogue = update_context()
-    for dict_message in session["conversation"].messages:
-        if dict_message["role"] == "user":
-            string_dialogue += "User: " + dict_message["content"] + "\\n\\n"
+        if len(conversation) == 0:
+            response = get_ai_response(user_response)
+            ai_response = None
         else:
-            string_dialogue += "Assistant: " + dict_message["content"] + "\\n\\n"
-            ai_response = co.generate(query_embed=co.embed(texts=[query], input_type=search_query, model="multilingual-22-12"))
-    return ai_response.generations[0].text.strip()
+            response = get_ai_response(user_response)
+            ai_response = response.choices[0].message["content"].strip()
 
+        previous_response = {"user": user_response, "assistant": ai_response}
+        conversation.append(previous_response)
+        session["conversation"].add_assistant_message(ai_response)
+
+        return jsonify({"message": ai_response})
+    else:
+        return jsonify({"error": "No message provided"})
+
+
+
+def get_ai_response(conversation):
+    conversation_string = ""
+    for message in conversation:
+        if message["role"] == "user":
+            conversation_string += "User: " + message["content"] + "\\n\\n"
+        else:
+            conversation_string += "Assistant: " + message["content"] + "\\n\\n"
+    
+    response = co.generate(query_embed=co.embed(texts=conversation_string, context=context_string, input_type="search_query", model="multilingual-22-12"))
+
+    ai_response = response.generations[0].text.strip()
+
+    return ai_response
 
 
 if __name__ == "__main__":
