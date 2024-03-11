@@ -10,10 +10,10 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)  # Set a secret key for session management
 
 # Setup API keys
-cohere_api_key = os.getenv("cohere_api_key")
-weaviate_api_key = os.getenv("weaviate_api_key")
-weaviate_url = os.getenv("weaviate_url")
-openai_api_key = os.getenv("openai_api_key")
+cohere_api_key = os.getenv('CO_API_KEY')
+weaviate_api_key = os.getenv('WEAVIATE_API_KEY')
+weaviate_url = os.getenv('WEAVIATE_URL')
+openai_api_key = os.getenv('OPENAI_API_KEY')
 
 # Connect to Cohere
 co = cohere.Client(cohere_api_key)
@@ -84,7 +84,7 @@ def get_ai_response(user_response):
             string_dialogue += "User: " + dict_message["content"] + "\\n\\n"
         else:
             string_dialogue += "Assistant: " + dict_message["content"] + "\\n\\n"
-            ai_response = co.generate(query_embed=co.embed(texts=[query], input_type=search_query, model="multilingual-22-12")
+            ai_response = co.generate(query_embed=co.embed(texts=[query], input_type=search_query, model="multilingual-22-12"))
     return ai_response.generations[0].text.strip()
 
 
