@@ -2,16 +2,19 @@ import weaviate
 from weaviate.embedded import EmbeddedOptions
 import cohere
 import os
+from dotenv import load_dotenv
 import pandas as pd
 import numpy as np
+
+load_dotenv()
 
 # Define the path to the marker file
 marker_file_path = "weaviate_class_created.txt"
 
 # Setup API keys
-cohere_api_key = os.getenv("cohere_api_key")
-weaviate_api_key = os.getenv("weaviate_api_key")
-weaviate_url = os.getenv("weaviate_url")
+cohere_api_key = os.getenv("CO_API_KEY")
+weaviate_api_key = os.getenv("WEAVIATE_API_KEY")
+weaviate_url = os.getenv("WEAVIATE_URL")
 
 # Connect to Cohere
 co = cohere.Client(cohere_api_key)

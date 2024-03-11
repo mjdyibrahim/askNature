@@ -3,8 +3,11 @@ import weaviate
 from weaviate.embedded import EmbeddedOptions
 import cohere
 import os
+from dotenv import load_dotenv
 import pandas as pd
 import numpy as np
+
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # Set a secret key for session management
