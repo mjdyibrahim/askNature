@@ -1,5 +1,6 @@
 venv/
 .ipynb_checkpoints/
+.vscode
 .env
 weaviate_class_created.txt
 conscienceos.sock
