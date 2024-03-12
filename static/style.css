@@ -127,17 +127,21 @@ body {
 	border-radius: 0.5rem;
 }
 
-.lyla-message {
+.message img {
+	width:50px;
+	height:50px;
+}
+
+.ai-message {
 	display:flex;
 	align-self: flex-start;
 }
 
-.lyla-message-icon {
-	flex:1;
+.ai-message-icon {
 	vertical-align:middle;
 }
 
-.lyla-message-content {
+.ai-message-content {
 	flex:3;
 	background-color: #f5f5f5;
 	padding:0px 14px;
