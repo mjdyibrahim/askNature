@@ -23,6 +23,7 @@ co = cohere.Client(cohere_api_key)
 client = weaviate.connect_to_wcs(
     cluster_url=weaviate_url,
     auth_credentials=weaviate.auth.AuthApiKey(weaviate_api_key),
+    additional_config=weaviate.config.AdditionalConfig(timeout=(60, 120))  # Values in seconds
 )
 
 
@@ -74,12 +75,12 @@ def process_file(file_path):
     # Save the numpy array containing all embeddings to a single file
     np.save(f"{filename}_embeddings.npy", all_embeddings_array)
 
-    # objects = []
-    # for text, embedding in zip(texts, embeds):
-    #    properties = {'text': text, 'embedding': embedding.tolist()}
-    #    objects.append(properties)
+    objects = []
+    for text, embedding in zip(texts, embeds):
+        properties = {'text': text, 'embedding': embedding.tolist()}
+        objects.append(properties)
 
-    # client.collections.get('BiologicalStrategiesInnovations').data.insert_many(objects)
+    client.collections.get('BiologicalStrategiesInnovations').data.insert_many(objects)
 
 
 # Runs only the first time the app is being ran
