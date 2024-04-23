@@ -12,13 +12,7 @@ Biomimicry Integration: Utilizes Biomimicry principles to inspire innovative sol
 AI-driven Insights: Employs artificial intelligence to analyze and interpret biological data.
 Sustainable Solutions: Develops environmentally friendly strategies based on nature's wisdom.
 Hybrid Search Functionality: Utilizes Cohere and Weaviate for Hybrid Search to match user questions with nature-inspired solutions.
-Getting Started
-To get started with ConscienceOS, follow these steps:
 
-Clone the Repository: git clone https://github.com/your-username/ConscienceOS.git
-Install Dependencies: npm install
-Configure Environment: Set up your API keys and environmental variables.
-Run the Application: npm start
 Contributing
 We welcome contributions from the community to help advance the mission of ConscienceOS. To contribute, please follow these guidelines:
 
