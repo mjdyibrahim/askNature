@@ -78,16 +78,28 @@ def get_bot_response():
 
 
 def get_ai_response(conversation):
+    # Construct the conversation history string
     conversation_string = ""
     for message in conversation:
         if message["role"] == "user":
-            conversation_string += "User: " + message["content"] + "\\n\\n"
+            conversation_string += " " + message["content"] + "\\n\\n"
         else:
             conversation_string += "Assistant: " + message["content"] + "\\n\\n"
-    
-    response = co.generate(query_embed=co.embed(texts=conversation_string, context=context_string, input_type="search_query", model="multilingual-22-12"))
 
-    ai_response = response.generations[0].text.strip()
+    # Generate Cohere response based on the conversation history
+    cohere_response = co.generate(query_embed=co.embed(texts=conversation_string, context=context_string, input_type="search_query", model="multilingual-22-12"))
+    ai_response = cohere_response.generations[0].text.strip()
+
+    # Use the Weaviate client to search for related content
+    weaviate_results = client.search.query.get(q=conversation_string, article="AskNature")
+
+    if weaviate_results:
+        # Extract information from Weaviate results to enrich the response
+        biological_strategies = [result["data"]["biologicalStrategies"][0] for result in weaviate_results if "biologicalStrategies" in result["data"]]
+        biological_innovations = [result["data"]["biologicalInnovations"][0] for result in weaviate_results if "biologicalInnovations" in result["data"]]
+
+        ai_response += "\n\nHere are some related biological strategies: " + ", ".join(biological_strategies)
+        ai_response += "\n\nHere are some related biological innovations: " + ", ".join(biological_innovations)
 
     return ai_response
 
