@@ -29,50 +29,63 @@ client = weaviate.connect_to_wcs(
 
 
 def create_weaviate_class():
-        # Check if the marker file exists
-        if not os.path.exists(marker_file_path):
-            # Define a data collection (class) in Weaviate
-            class_config = {
-                        "name": "BiologicalStrategiesInnovations",
-                        "vectorizer_config": weaviate.classes.config.Configure.Vectorizer.text2vec_cohere(),
-                        "generative_config": weaviate.classes.config.Configure.Generative.cohere(),
-                    }
+    # Check if the marker file exists
+    if not os.path.exists(marker_file_path):
+        # Define a data collection (class) in Weaviate
+        class_config = {
+            "name": "BiologicalStrategiesInnovations",
+            "vectorizer_config": weaviate.classes.config.Configure.Vectorizer.text2vec_cohere(),
+            "generative_config": weaviate.classes.config.Configure.Generative.cohere(),
+        }
         class_object = client.collections.create(**class_config)
 
         # Create the marker file
         with open(marker_file_path, "w") as f:
-                    f.write("Weaviate class created")
+            f.write("Weaviate class created")
 
-                return class_object
-            else:
-                print("Weaviate class already created.")
-                return None
+        return class_object
+    else:
+        print("Weaviate class already created.")
+        return None
+
+
 def process_file(file_path):
     # Extract filename without extension
-filename = os.path.splitext(os.path.basename(file_path))[0]
+    filename = os.path.splitext(os.path.basename(file_path))[0]
 
     # Load data
-raw_df = pd.read_csv(file_path)
+    raw_df = pd.read_csv(file_path)
 
     texts = raw_df["name"].tolist()
 
     # Embed text data using Cohere
-embeds = co.embed(texts=texts, model="multilingual-22-12")
+    embeds = co.embed(texts=texts, model="multilingual-22-12")
 
     # Save embeddings to a single numpy array file
-all_embeddings_array = np.array([embed.vector for embed in embeds])
+    all_embeddings_array = np.array([embed.vector for embed in embeds])
     np.save(f"{filename}_embeddings.npy", all_embeddings_array)
 
     # Process embeddings for each row of the CSV file
-for text, embedding in tqdm(zip(texts, embeds)):
+    for text, embedding in tqdm(zip(texts, embeds)):
         # Create a Weaviate object with the text and embedding
-object_data = {
+        object_data = {
             "text": text,
             "embedding": embedding.vector.tolist()
         }
 
         # Add the object to the Weaviate collection
-client.collections.get("BiologicalStrategiesInnovations").data.insert_one(object_data)
+        client.collections.get("BiologicalStrategiesInnovations").data.insert_one(object_data)
 
 
 def main():
+    # Call create_weaviate_class() to ensure the class is created before processing files
+    create_weaviate_class()
+
+    # Process each file
+    file_paths = ["file1.csv", "file2.csv"]  # Example file paths, replace with your actual file paths
+    for file_path in file_paths:
+        process_file(file_path)
+
+
+if __name__ == "__main__":
+    main()
